@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:meou/services/accounts/consentment_creation.dart';
+import 'package:meau/services/accounts/consentment_creation.dart';
+import 'commons/tapBox.dart';
 import 'models/Credential.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: RandomWords(),
+      home: MyStatelessWidget(),
     );
   }
 }
@@ -32,14 +33,6 @@ class _RandomWordsState extends State<RandomWords> {
   final _saved = Set<WordPair>(); // NEW
   final _biggerFont = TextStyle(fontSize: 18.0);
 
-  Future<Credential> futureCredential;
-
-  @override
-  void initState() {
-    super.initState();
-    futureCredential = fetchCredential();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,14 +45,14 @@ class _RandomWordsState extends State<RandomWords> {
       body: //_buildSuggestions(),
           Center(
         child: FutureBuilder<Credential>(
-          future: futureCredential,
+          //future: futureCredential,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Text(snapshot.data.accessToken);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
-            return Text('Nada');
+            return Text("Nada");
             // By default, show a loading spinner.
           },
         ),
