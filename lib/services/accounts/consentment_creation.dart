@@ -7,8 +7,8 @@ import '../../models/Credential.dart';
 import 'package:flutter/foundation.dart';
 import 'package:dio/dio.dart';
 
-Future<Credential> fetchCredential() async {
-  final tokenEndpoint = "https://as1.tecban-sandbox.o3bank.co.uk/token";
+Future<Credential> fetchCredential(String bank) async {
+  final tokenEndpoint = "https://as$bank.tecban-sandbox.o3bank.co.uk/token";
 
   final clientCredentials =
       'ODFjYWM0NzgtOGQwZS00ZWFkLWIwMjQtZjUzOWRhMzBlZmFjOjYzYWNlMDllLTcyODktNDcyMi05MmE2LWFhYTA3NzY4NzdhZQ==';

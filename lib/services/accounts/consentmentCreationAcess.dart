@@ -70,5 +70,7 @@ Future<ConsentAcess> fetchConsentAcess(Credential cred) async {
       "$tokenType $acessToken";
   responseD = await dio.post(resourceEndpoint, data: jsonMap);
   debugPrint('responseX: ' + responseD.data.toString());
-  return ConsentAcess.fromJson(responseD.data);
+  Consent result = Consent.fromJson(responseD.data);
+  debugPrint('result: ' + result.data.consentId.toString());
+  return result.data;
 }
